@@ -1,0 +1,16 @@
+[build]
+builder = "nixpacks"
+buildCommand = "npm install && npm run build"
+
+[deploy]
+startCommand = "npm run start:prod"
+healthcheckPath = "/api/products/health"
+healthcheckTimeout = 100
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 10
+
+[env]
+NODE_ENV = "production"
+PORT = "3000"
+DATABASE_URL = "postgresql://user:password@host:5432/dbname"
+JWT_SECRET = "your-secret-key" 
